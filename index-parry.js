@@ -3,8 +3,8 @@ const c = canvas.getContext('2d');
 
 
 // Spielausschnitt
-canvas.width = 1024
-canvas.height = 576
+canvas.width =  1280
+canvas.height = 720
 //zeichnet ein Rechteck(position x, position y, dicke, höhe)
 c.fillRect(0, 0, canvas.width, canvas.height)
 // 
@@ -33,6 +33,7 @@ class Sprite {
         }
         // color wird zugewiesen, default color ist red
         this.color = color
+        this.isParrying
         this.isAttacking
         this.health = 100
     }
@@ -54,6 +55,15 @@ class Sprite {
             this.attackBox.height
             )
         }
+        if (this.isParrying){
+            c.fillStyle = "yellow"
+            c.fillRect(
+                this.attackBox.position.x, 
+                this.attackBox.position.y, 
+                this.attackBox.width, 
+                this.attackBox.height
+                )
+            }
     }
 
     update() {
@@ -82,6 +92,15 @@ class Sprite {
         this.isAttacking = false
        }, 100) 
     }
+    parry(){
+        // isAttacking ist true und wird nach 100 mSec auf false gesetzt
+       this.isParrying = true
+       setTimeout(()=> {
+        this.isParrying = false
+       }, 100) 
+    }
+
+
 }
 
 
@@ -166,6 +185,13 @@ function rectangularCollision({ rectangle1, rectangle2 }){
         rectangle1.attackBox.position.x <= rectangle2.position.x + rectangle2.width &&
         rectangle1.attackBox.position.y + rectangle1.attackBox.height >= rectangle2.position.y && 
         rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height
+        )
+}
+
+function rectangularCollisionParry({ rectangle1, rectangle2 }){
+    return (
+        rectangle1.attackBox.position.x + rectangle1.attackBox.width >= rectangle2.attackBox.position.x && 
+        rectangle1.attackBox.position.x <= rectangle2.position.x + rectangle2.width
         )
 }
 
@@ -266,6 +292,37 @@ function animate(){
             document.querySelector('#playerHealth').style.width = player.health + '%'
     }
 
+
+    if (
+        rectangularCollisionParry({
+            rectangle1: player,
+            rectangle2: enemy
+
+        }) &&
+        player.isParrying && enemy.isAttacking && player.health <= 75
+        ) {
+            player.isParrying = false
+            // angriff lässt healthbar auf 20 Prozent schrumpfen
+            player.health += 25
+            document.querySelector('#playerHealth').style.width = player.health + '%'
+            
+        
+    }
+    // enemy
+    if (
+        rectangularCollisionParry({
+            rectangle1: enemy,
+            rectangle2: player
+
+        }) &&
+        enemy.isParrying && player.isAttacking && enemy.health <= 75
+        ) {
+            enemy.isParrying = false
+            enemy.health += 25
+            document.querySelector('#enemyHealth').style.width = enemy.health + '%'
+        
+    }
+
     // beendet spiel, wenn healthbar bei 0 ist
     if (enemy.health <= 0 || player.health <= 0){
         determineWinner({player,enemy,timerId})
@@ -297,7 +354,7 @@ window.addEventListener('keydown', (event) =>{
             player.lastKey = 'a'
             break
         case 'w':
-            player.velocity.y = -20
+            player.parry()
             break
         //attack    
         case " ":
@@ -314,11 +371,11 @@ window.addEventListener('keydown', (event) =>{
             enemy.lastKey = 'ArrowLeft'
             break
         case 'ArrowUp':
-            enemy.velocity.y = -20
-            break   
+            enemy.parry()
+            break  
         // attack
         case "ArrowDown":
-            enemy.isAttacking = true
+            enemy.attack()
             break 
 
     }

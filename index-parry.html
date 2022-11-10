@@ -1,0 +1,94 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <!-- red container div -->
+    <div style="position: relative; display: inline-block">
+        <!-- smaller red container div -->
+        <div style="
+            position: absolute; 
+            display: flex; 
+            width: 100%; 
+            align-items: center;
+            padding: 20px
+            ">
+            <!-- player health bar -->
+            <div style="position: relative; height: 30px; width: 100%; display: flex; justify-content: flex-end;">
+                <!-- unterer Balken-->
+                <div 
+                    
+                    style="background-color: rgb(0, 255, 225);height: 30px; width: 100% ">
+                </div>
+                <!-- oberer überlappender Balken-->
+                <div 
+                    id="playerHealth" 
+                    style="
+                    position: absolute; 
+                    background: blue; 
+                    top: 0; 
+                    right: 0; 
+                    bottom: 0; 
+                    width: 100%;
+                "></div>
+            </div>
+            <!-- timer -->
+            <div
+                id="timer" 
+                style="
+                background-color: rgb(0, 255, 0); 
+                width: 100px; 
+                height: 100px; 
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                "
+            >10
+            </div>
+            <!-- Enemy Health bar-->
+            <div style="position: relative; height: 30px; width: 100%">
+                <!-- unterer Balken-->
+                <div 
+                    
+                    style="background-color: rgb(0, 255, 225);height: 30px; ">
+                </div>
+                <!-- oberer überlappender Balken-->
+                <div 
+                    
+                    id="enemyHealth" 
+                    style="
+                    position: absolute; 
+                    background: blue; 
+                    top: 0; 
+                    right: 0; 
+                    bottom: 0; 
+                    left: 0; 
+                "></div>
+            </div>
+            <div></div>
+            
+        </div>
+        <div id="displayText"
+        style="
+        position: absolute; 
+        color: white; 
+        align-items: center; 
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        ">
+        Unentschieden</div>
+        <canvas></canvas>
+    </div>
+    <script src="index-parry.js"></script>
+</body>
