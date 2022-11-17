@@ -20,6 +20,17 @@ const background = new Sprite({
     imageSrc: './img/platzHalterBackground.png'
 })
 
+//im video wird ein shop animiert, wir könnte einfach iwas ähnliches nehmen, hier der code falls nötig
+/*const shop = new Sprite({
+    position: {
+        x: 600,
+        y: 128
+    },
+    imageSrc: './img/shop.png',
+    scale: 1.5,
+    framesMax = 6 anzahl der frames für die animation
+})*/
+
 // Player aus Spielfigurenklasse Sprite
 const player = new Fighter({
     position: {
@@ -103,6 +114,7 @@ function animate(){
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     background.update()
+    //shop.update() //possible bug weil kein shop designed wurde?
     player.update()
     enemy.update()
 
