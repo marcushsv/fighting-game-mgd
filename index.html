@@ -1,5 +1,23 @@
+<html>
+<head>
+<title>Background music</title>
+</head>
+<body>
+  <audio id="song">
+    <source src="./img/kabuki-13508.mp3">
+  </audio>
+
+  <script>
+    window.addEventListener('click', () => {
+      document.getElementById("song").play();
+    })
+  </script>
+
+</body>
+</html>
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
         * {
             box-sizing: border-box;
         }
@@ -24,14 +42,14 @@
                 <!-- unterer Balken-->
                 <div 
                     
-                    style="background-color: rgb(0, 255, 225);height: 30px; width: 100% ">
+                    style="background-color: rgba(255, 0, 0, 0.637);height: 30px; width: 100% ">
                 </div>
                 <!-- oberer überlappender Balken-->
                 <div 
                     id="playerHealth" 
                     style="
                     position: absolute; 
-                    background: blue; 
+                    background: rgb(77, 6, 6); 
                     top: 0; 
                     right: 0; 
                     bottom: 0; 
@@ -42,13 +60,16 @@
             <div
                 id="timer" 
                 style="
-                background-color: rgb(0, 255, 0); 
+                background-color: rgb(26, 26, 26); 
                 width: 100px; 
-                height: 100px; 
+                height: 50px; 
                 flex-shrink: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-family: 'Permanent Marker', cursive;
+                font-size: 2em;
+                color: rgb(124, 124, 124);
                 "
             >10
             </div>
@@ -57,7 +78,7 @@
                 <!-- unterer Balken-->
                 <div 
                     
-                    style="background-color: rgb(0, 255, 225);height: 30px; ">
+                    style="background-color: rgba(255, 0, 0, 0.637);height: 30px; ">
                 </div>
                 <!-- oberer überlappender Balken-->
                 <div 
@@ -65,7 +86,7 @@
                     id="enemyHealth" 
                     style="
                     position: absolute; 
-                    background: blue; 
+                    background: rgb(77, 6, 6); 
                     top: 0; 
                     right: 0; 
                     bottom: 0; 
@@ -78,7 +99,7 @@
         <div id="displayText"
         style="
         position: absolute; 
-        color: white; 
+        color: rgb(0, 0, 0); 
         align-items: center; 
         justify-content: center;
         top: 0;
@@ -86,9 +107,13 @@
         left: 0;
         right: 0;
         display: none;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 5em;
         ">
         Unentschieden</div>
         <canvas></canvas>
     </div>
-    <script src="index-parry.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/classes.js"></script>
+    <script src="index.js"></script>
 </body>
