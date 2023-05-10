@@ -8,6 +8,13 @@ function rectangularCollision({ rectangle1, rectangle2 }){
         )
 }
 
+function rectangularCollisionParry({ rectangle1, rectangle2 }){
+    return (
+        rectangle1.attackBox.position.x + rectangle1.attackBox.width >= rectangle2.attackBox.position.x && 
+        rectangle1.attackBox.position.x <= rectangle2.position.x + rectangle2.width
+        )
+}
+
 
 // timer funktion
 
