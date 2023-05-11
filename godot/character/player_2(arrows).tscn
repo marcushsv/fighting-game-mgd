@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://6slqyyh3mo4l"]
+
+[ext_resource type="Script" path="res://playerarrowmovement.gd" id="1_0p0n7"]
+[ext_resource type="Texture2D" uid="uid://dhyc2jnlbipnl" path="res://assets/idle_placeholder.png" id="2_qsy4q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_risxx"]
+radius = 66.0
+height = 174.0
+
+[node name="player2(arrows)" type="CharacterBody2D"]
+position = Vector2(983, 476)
+script = ExtResource("1_0p0n7")
+speed = 250.0
+jump_velocity = -270.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.62939e-06, 1.52588e-05)
+scale = Vector2(0.226651, 0.216531)
+texture = ExtResource("2_qsy4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_risxx")

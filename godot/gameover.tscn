@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://duv6nmr2ep77n"]
+
+[node name="gameover" type="Node2D"]

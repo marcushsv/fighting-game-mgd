@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var speed : float  = 300.0
+@export var jump_velocity : float = -400.0
+@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+var animation_locked : bool = false
+var direction : Vector2 = Vector2.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -10,20 +13,35 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	# Add the gravity.
-	if is_on_floor():
+	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("w") and is_on_floor():
+		velocity.y = jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
+	direction = Input.get_vector("a", "d", "w", "s")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction.x * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+	updateAnimation()
+	updateFacingDirection()
+	
+	
+func updateAnimation():
+	if not animation_locked:
+		if direction.x != 0:
+			animated_sprite.play("run")
+		else:
+			animated_sprite.play("idle")
 
+func updateFacingDirection():
+	if direction.x > 0:
+		animated_sprite.flip_h = false
+	elif direction.x < 0:
+		animated_sprite.flip_h = true
