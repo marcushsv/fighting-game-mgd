@@ -6,9 +6,15 @@ extends CharacterBody2D
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
+@export var max_hp : int = 1000
+var current_hp : int
+var attack = preload("res://attack.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready():
+	current_hp = max_hp
 
 
 func _physics_process(delta):
@@ -31,6 +37,7 @@ func _physics_process(delta):
 	move_and_slide()
 	updateAnimation()
 	updateFacingDirection()
+	attackLoop()
 	
 	
 func updateAnimation():
@@ -45,3 +52,8 @@ func updateFacingDirection():
 		animated_sprite.flip_h = false
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
+		
+func attackLoop():
+	if Input.is_action_just_pressed("attack"):
+		var attack_instance = attack.instantiate()
+		get_parent().add_child(attack_instance)

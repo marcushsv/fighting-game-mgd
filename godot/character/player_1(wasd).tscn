@@ -394,5 +394,3 @@ shape = SubResource("CapsuleShape2D_risxx")
 position = Vector2(-6.25, -127.75)
 scale = Vector2(0.160156, 0.160156)
 texture = ExtResource("7_445q0")
-
-[node name="ShaderGlobalsOverride" type="ShaderGlobalsOverride" parent="."]
