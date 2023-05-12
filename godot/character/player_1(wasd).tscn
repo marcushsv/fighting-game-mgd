@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cmuldjgu72m71"]
+[gd_scene load_steps=57 format=3 uid="uid://cmuldjgu72m71"]
 
 [ext_resource type="Script" path="res://playerwasdmovement.gd" id="1_obddr"]
 [ext_resource type="Texture2D" uid="uid://bnsafigiseh3x" path="res://assets/sprites/Death.png" id="2_3dgu7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cf5psm31hqo8q" path="res://assets/sprites/walking_spritesheet_new_Dimension.png" id="4_at6if"]
 [ext_resource type="Texture2D" uid="uid://bdgofw5ijjjgq" path="res://assets/sprites/walker.png" id="5_38vp1"]
 [ext_resource type="Texture2D" uid="uid://c0blhp48m7aew" path="res://assets/sprites/slashing_spritesheet.png" id="6_e2a0g"]
+[ext_resource type="Texture2D" uid="uid://c1rf4yfnpk2p2" path="res://icon.svg" id="7_445q0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0j2i"]
 atlas = ExtResource("2_3dgu7")
@@ -388,3 +389,10 @@ offset = Vector2(-5, 280)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(30, -40)
 shape = SubResource("CapsuleShape2D_risxx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.25, -127.75)
+scale = Vector2(0.160156, 0.160156)
+texture = ExtResource("7_445q0")
+
+[node name="ShaderGlobalsOverride" type="ShaderGlobalsOverride" parent="."]
