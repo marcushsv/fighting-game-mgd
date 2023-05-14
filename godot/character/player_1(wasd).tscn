@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cmuldjgu72m71"]
+[gd_scene load_steps=57 format=3 uid="uid://cmuldjgu72m71"]
 
 [ext_resource type="Script" path="res://playerwasdmovement.gd" id="1_obddr"]
 [ext_resource type="Texture2D" uid="uid://7bhwew8myfwe" path="res://assets/sprites/hurt_spritesheet.png" id="3_dkpyh"]
@@ -9,17 +9,61 @@
 radius = 43.0
 height = 162.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_261hy"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yvbm5"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h8pdb"]
 animation = &"hurt"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y13e4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ak3vw"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_blhqx"]
 animation = &"slasher"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oqyce"]
+animation = &"walker"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rbmnf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i3epd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t0ir7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r6oan"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_blp7k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n8cvp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rlnjt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0xdah"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m02m8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v1k02"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6f3di"]
-states/hurt/node = SubResource("AnimationNodeAnimation_261hy")
-states/hurt/position = Vector2(310, 64)
-states/slasher/node = SubResource("AnimationNodeAnimation_y13e4")
-states/slasher/position = Vector2(338, 142)
+states/Start/position = Vector2(292, 100)
+states/death/node = SubResource("AnimationNodeAnimation_yvbm5")
+states/death/position = Vector2(726, 91)
+states/hurt/node = SubResource("AnimationNodeAnimation_h8pdb")
+states/hurt/position = Vector2(666, 202)
+states/idle/node = SubResource("AnimationNodeAnimation_ak3vw")
+states/idle/position = Vector2(466, 100)
+states/slasher/node = SubResource("AnimationNodeAnimation_blhqx")
+states/slasher/position = Vector2(613, -46)
+states/walker/node = SubResource("AnimationNodeAnimation_oqyce")
+states/walker/position = Vector2(392, -46)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slasher", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slasher", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walker", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walker", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "walker", "slasher", SubResource("AnimationNodeStateMachineTransition_n8cvp"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_rlnjt"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_0xdah"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_m02m8"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02")]
+graph_offset = Vector2(203, -46)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sivvb"]
 
@@ -39,57 +83,49 @@ region = Rect2(2600, 0, 1300, 1500)
 atlas = ExtResource("3_dkpyh")
 region = Rect2(3900, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gd1ed"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7seew"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(0, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndr6y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vd7b"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(1300, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tffg5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo2dc"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(2600, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ucb1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhtd7"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(3900, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8y7w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1elyq"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(5200, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gh5df"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xacek"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(6500, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_prc76"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt6p3"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(7800, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ks62e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ljas"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(9100, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_myeth"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k055"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(10400, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vevlx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbcyo"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(11700, 0, 1300, 1500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5meqw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3suhl"]
 atlas = ExtResource("4_lqag2")
 region = Rect2(13000, 0, 1300, 1500)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hupry"]
-atlas = ExtResource("4_lqag2")
-region = Rect2(14300, 0, 1300, 1500)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_an7q6"]
-atlas = ExtResource("4_lqag2")
-region = Rect2(15600, 0, 1300, 1500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ay85"]
 atlas = ExtResource("8_cniuc")
@@ -146,51 +182,45 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lf6b6")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gd1ed")
+"texture": SubResource("AtlasTexture_7seew")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ndr6y")
+"texture": SubResource("AtlasTexture_0vd7b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tffg5")
+"texture": SubResource("AtlasTexture_fo2dc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8ucb1")
+"texture": SubResource("AtlasTexture_mhtd7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c8y7w")
+"texture": SubResource("AtlasTexture_1elyq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gh5df")
+"texture": SubResource("AtlasTexture_xacek")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_prc76")
+"texture": SubResource("AtlasTexture_dt6p3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ks62e")
+"texture": SubResource("AtlasTexture_6ljas")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_myeth")
+"texture": SubResource("AtlasTexture_0k055")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vevlx")
+"texture": SubResource("AtlasTexture_mbcyo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5meqw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hupry")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_an7q6")
+"texture": SubResource("AtlasTexture_3suhl")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 12.0
 }, {
@@ -225,7 +255,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_telat")
 }],
-"loop": true,
+"loop": false,
 "name": &"slashser",
 "speed": 10.0
 }]
@@ -244,10 +274,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7jls1"]
 resource_name = "hurt"
 length = 0.40001
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -275,6 +318,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_t703t"]
 resource_name = "slasher"
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -299,15 +343,70 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_crns5"]
+resource_name = "idle"
+length = 1.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_swfcy"]
+resource_name = "walker"
+
+[sub_resource type="Animation" id="Animation_m4ljo"]
+resource_name = "death"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ge7v0"]
 _data = {
 "RESET": SubResource("Animation_8pkyt"),
+"death": SubResource("Animation_m4ljo"),
 "hurt": SubResource("Animation_7jls1"),
-"slasher": SubResource("Animation_t703t")
+"idle": SubResource("Animation_crns5"),
+"slasher": SubResource("Animation_t703t"),
+"walker": SubResource("Animation_swfcy")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbnbv"]
+radius = 106.466
+height = 616.379
+
 [node name="player1(wasd)" type="CharacterBody2D"]
+position = Vector2(560, 388)
 script = ExtResource("1_obddr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -321,12 +420,23 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_sivvb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(50, -73)
+scale = Vector2(0.178462, 0.178462)
 sprite_frames = SubResource("SpriteFrames_j3vpt")
-animation = &"hurt"
-frame = 2
-frame_progress = 0.239614
+animation = &"idle"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ge7v0")
 }
+
+[node name="SwordHit" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/SwordHit"]
+position = Vector2(240.948, 173.707)
+shape = SubResource("CapsuleShape2D_hbnbv")
+disabled = true
+
+[connection signal="area_entered" from="AnimatedSprite2D/SwordHit" to="." method="_on_sword_hit_area_entered"]
