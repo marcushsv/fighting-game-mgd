@@ -11455,9 +11455,9 @@ sources/0 = SubResource("TileSetAtlasSource_xwfdf")
 a = Vector2(-1, -469)
 b = Vector2(0, 179)
 
-[node name="Node" type="Node"]
+[node name="Mapscene" type="Node"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_emay6")
 format = 2
 layer_0/name = "background"

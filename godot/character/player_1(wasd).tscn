@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=57 format=3 uid="uid://cmuldjgu72m71"]
 
 [ext_resource type="Script" path="res://playerwasdmovement.gd" id="1_obddr"]
@@ -409,11 +410,74 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbnbv"]
 radius = 106.466
 height = 616.379
+=======
+[gd_scene load_steps=15 format=3 uid="uid://cmuldjgu72m71"]
+
+[ext_resource type="Script" path="res://playerwasdmovement.gd" id="1_obddr"]
+[ext_resource type="Texture2D" uid="uid://c1rf4yfnpk2p2" path="res://icon.svg" id="7_445q0"]
+[ext_resource type="Texture2D" uid="uid://3x7r3laivt2" path="res://assets/sprites/Slasher.png" id="8_cniuc"]
+
+[sub_resource type="Animation" id="Animation_gc7qr"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_7ltp7"]
+resource_name = "walker"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playersheets:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7)
+}
+
+[sub_resource type="Animation" id="Animation_pjytr"]
+resource_name = "slasher"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wsfb"]
+_data = {
+"idle": SubResource("Animation_gc7qr"),
+"slasher": SubResource("Animation_pjytr"),
+"walker": SubResource("Animation_7ltp7")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kg0mp"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o6g6b"]
+animation = &"slasher"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_grb04"]
+animation = &"walker"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tkbop"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1hkyh"]
+states/idle/node = SubResource("AnimationNodeAnimation_kg0mp")
+states/idle/position = Vector2(322, 99)
+states/slasher/node = SubResource("AnimationNodeAnimation_o6g6b")
+states/slasher/position = Vector2(432, 60)
+states/walker/node = SubResource("AnimationNodeAnimation_grb04")
+states/walker/position = Vector2(432, 177)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_tkbop")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mb455"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0k3rf"]
+radius = 13.0
+height = 102.0
+>>>>>>> master
 
 [node name="player1(wasd)" type="CharacterBody2D"]
 position = Vector2(560, 388)
 script = ExtResource("1_obddr")
 
+<<<<<<< HEAD
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(30, -40)
 shape = SubResource("CapsuleShape2D_risxx")
@@ -445,3 +509,31 @@ shape = SubResource("CapsuleShape2D_hbnbv")
 disabled = true
 
 [connection signal="area_entered" from="AnimatedSprite2D/SwordHit" to="." method="_on_sword_hit_area_entered"]
+=======
+[node name="pointer" type="Sprite2D" parent="."]
+position = Vector2(-6.25, -127.75)
+scale = Vector2(0.160156, 0.160156)
+texture = ExtResource("7_445q0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_2wsfb")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_1hkyh")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mb455")
+
+[node name="playersheets" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_cniuc")
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 14)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_0k3rf")
+>>>>>>> master
