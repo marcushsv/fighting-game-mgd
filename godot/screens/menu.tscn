@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2lvfihr5unj2"]
+[gd_scene load_steps=7 format=3 uid="uid://c2lvfihr5unj2"]
 
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_vijr1"]
+[ext_resource type="FontFile" uid="uid://6ip6cnfwui2r" path="res://Zenzai Itacha.ttf" id="2_guo1e"]
 [ext_resource type="Script" path="res://Button.gd" id="2_swfgg"]
 [ext_resource type="Script" path="res://screens/start.gd" id="2_vc4or"]
 
@@ -11452,6 +11453,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xwfdf")
 
 [node name="menu" type="Node2D"]
+position = Vector2(-63, -32)
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_413g0")
@@ -11464,6 +11466,8 @@ offset_left = 540.0
 offset_top = 135.0
 offset_right = 715.0
 offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("2_guo1e")
+theme_override_font_sizes/font_size = 26
 text = "Start
 "
 script = ExtResource("2_vc4or")
@@ -11473,6 +11477,8 @@ offset_left = 540.0
 offset_top = 216.0
 offset_right = 715.0
 offset_bottom = 286.0
+theme_override_fonts/font = ExtResource("2_guo1e")
+theme_override_font_sizes/font_size = 26
 text = "Exit
 "
 script = ExtResource("2_swfgg")
