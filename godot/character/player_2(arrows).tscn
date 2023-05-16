@@ -13,10 +13,10 @@ script = ExtResource("1_0p0n7")
 speed = 250.0
 jump_velocity = -270.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7.62939e-06, 1.52588e-05)
-scale = Vector2(0.226651, 0.216531)
-texture = ExtResource("2_qsy4q")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_risxx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(0.226651, 0.216531)
+texture = ExtResource("2_qsy4q")

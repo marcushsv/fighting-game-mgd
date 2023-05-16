@@ -25,6 +25,7 @@ func _process(delta):
 
 	if current_hp <= 0:
 		die()
+		get_tree().change_scene_to_file("res://screens/gameover.tscn")
 
 func _physics_process(delta):
 	get_input(delta)
