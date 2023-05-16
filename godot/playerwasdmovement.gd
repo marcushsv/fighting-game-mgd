@@ -7,7 +7,7 @@ extends CharacterBody2D
 var direction : Vector2 = Vector2.ZERO
 var animation_locked : bool = false
 @export var max_hp : int = 1000
-var current_hp : int
+@export var current_hp : float
 var animation
 
 
@@ -21,10 +21,9 @@ func _ready():
 	
 	
 func _process(delta):
-	updateFacingDirection()
-
 	if current_hp <= 0:
 		die()
+
 
 func _physics_process(delta):
 	get_input(delta)
@@ -35,30 +34,30 @@ func _physics_process(delta):
 
 
 func get_input(delta):
+	
 	move_and_slide()
 	
+	direction = Input.get_vector("a", "d", "null", "null")
+
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
 	if Input.is_action_just_pressed("w") and is_on_floor():
 		velocity.y = jump_velocity
-		
-	
-	
-	
-	direction = Input.get_vector("a", "d", "null", "null")
+
+
 	if direction:
-		walk()
+		if direction.x < 0:
+			walk()
+		if direction.x > 0:
+			walk_bw()
 		velocity.x = direction.x * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		animation.travel("idle")
 
-func updateFacingDirection():
-	if direction.x > 0:
-		sprite.flip_h = false
-	elif direction.x < 0:
-		sprite.flip_h = true
+
 
 func attack():
 	animation.travel("slash")
@@ -71,6 +70,9 @@ func die():
 
 func walk():
 	animation.travel("walk")
+	
+func walk_bw():
+	animation.travel("walk_bw")
 
 func _on_sword_hit_area_entered(area):
 	if area.is_in_group("hurtbox"):

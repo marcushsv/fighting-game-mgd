@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch2wxbpwurp5u"]
+[gd_scene load_steps=10 format=3 uid="uid://ch2wxbpwurp5u"]
 
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_e5u85"]
+[ext_resource type="Script" path="res://screens/hpbar.gd" id="1_lip0h"]
 [ext_resource type="PackedScene" uid="uid://c7l1th2gg3viw" path="res://character/player_1(wasd).tscn" id="2_u021m"]
 [ext_resource type="Script" path="res://character/player_1(arrows).gd" id="3_kr0sm"]
+[ext_resource type="Texture2D" uid="uid://b4cqiac0c8kpn" path="res://assets/progress_color.png" id="5_fe3ey"]
+[ext_resource type="Texture2D" uid="uid://bjl8wokvjmsbo" path="res://assets/progress_over.png" id="6_n1ddf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwfdf"]
 texture = ExtResource("1_e5u85")
@@ -11456,6 +11459,7 @@ a = Vector2(-1, -469)
 b = Vector2(0, 179)
 
 [node name="Mapscene" type="Node"]
+script = ExtResource("1_lip0h")
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_emay6")
@@ -11488,3 +11492,44 @@ position = Vector2(1145, 471)
 position = Vector2(2, 3)
 shape = SubResource("SegmentShape2D_qgbg2")
 one_way_collision_margin = 0.0
+
+[node name="hp_player1" type="TextureProgressBar" parent="."]
+texture_filter = 3
+anchors_preset = -1
+offset_left = 792.0
+offset_top = 625.0
+offset_right = 1144.0
+offset_bottom = 646.0
+value = 50.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("5_fe3ey")
+texture_over = ExtResource("6_n1ddf")
+texture_progress = ExtResource("5_fe3ey")
+tint_under = Color(0.568627, 0.568627, 0.568627, 1)
+tint_over = Color(0.870588, 0.87451, 0.866667, 0.741176)
+tint_progress = Color(0.847059, 0.0980392, 0, 1)
+
+[node name="hp_player2" type="TextureProgressBar" parent="."]
+texture_filter = 3
+anchors_preset = -1
+offset_left = 5.0
+offset_top = 624.0
+offset_right = 354.0
+offset_bottom = 645.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("5_fe3ey")
+texture_over = ExtResource("6_n1ddf")
+texture_progress = ExtResource("5_fe3ey")
+tint_under = Color(0.568627, 0.568627, 0.568627, 1)
+tint_over = Color(0.870588, 0.87451, 0.866667, 0.741176)
+tint_progress = Color(0.847059, 0.0980392, 0, 1)
