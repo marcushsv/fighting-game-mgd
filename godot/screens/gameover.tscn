@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://duv6nmr2ep77n"]
+[gd_scene load_steps=8 format=3 uid="uid://duv6nmr2ep77n"]
 
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_53i5k"]
-[ext_resource type="Script" path="res://screens/restart.gd" id="2_fk0yw"]
+[ext_resource type="FontFile" uid="uid://6ip6cnfwui2r" path="res://Zenzai Itacha.ttf" id="2_2iqn4"]
 [ext_resource type="Script" path="res://Button.gd" id="2_hp22q"]
+[ext_resource type="Script" path="res://screens/start.gd" id="3_ilbno"]
+[ext_resource type="AudioStream" uid="uid://bqr3msubrtx73" path="res://assets/menu.mp3" id="5_d15o4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwfdf"]
 texture = ExtResource("1_53i5k")
@@ -11464,18 +11466,27 @@ offset_left = 540.0
 offset_top = 135.0
 offset_right = 715.0
 offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("2_2iqn4")
+theme_override_font_sizes/font_size = 26
 text = "Restart
 "
-script = ExtResource("2_fk0yw")
+script = ExtResource("3_ilbno")
 
-[node name="exit" type="Button" parent="."]
+[node name="exit2" type="Button" parent="."]
 offset_left = 540.0
 offset_top = 216.0
 offset_right = 715.0
 offset_bottom = 286.0
+theme_override_fonts/font = ExtResource("2_2iqn4")
+theme_override_font_sizes/font_size = 26
 text = "Exit
 "
 script = ExtResource("2_hp22q")
 
+[node name="menu_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_d15o4")
+volume_db = -8.567
+autoplay = true
+
 [connection signal="pressed" from="restart" to="restart" method="_on_pressed"]
-[connection signal="pressed" from="exit" to="exit" method="_on_pressed"]
+[connection signal="pressed" from="exit2" to="exit2" method="_on_pressed"]

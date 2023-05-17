@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2lvfihr5unj2"]
+[gd_scene load_steps=8 format=3 uid="uid://c2lvfihr5unj2"]
 
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_vijr1"]
 [ext_resource type="FontFile" uid="uid://6ip6cnfwui2r" path="res://Zenzai Itacha.ttf" id="2_guo1e"]
 [ext_resource type="Script" path="res://Button.gd" id="2_swfgg"]
 [ext_resource type="Script" path="res://screens/start.gd" id="2_vc4or"]
+[ext_resource type="AudioStream" uid="uid://bqr3msubrtx73" path="res://assets/menu.mp3" id="5_hklo5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwfdf"]
 texture = ExtResource("1_vijr1")
@@ -11482,6 +11483,11 @@ theme_override_font_sizes/font_size = 26
 text = "Exit
 "
 script = ExtResource("2_swfgg")
+
+[node name="menu_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hklo5")
+volume_db = -8.567
+autoplay = true
 
 [connection signal="pressed" from="start" to="start" method="_on_pressed"]
 [connection signal="pressed" from="exit" to="exit" method="_on_pressed"]

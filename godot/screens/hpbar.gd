@@ -7,7 +7,7 @@ var player2
 
 
 func _ready():
-	bar1 = $hp_player1.value
+	$hp_player1.set_value_no_signal(5)
 	bar2 = $hp_player2.value
 	player1 = $"player1(wasd)".current_hp
 	player2 = $"player2(arrows)".current_hp
