@@ -80,7 +80,7 @@ states/Start/position = Vector2(292, 100)
 states/death/node = SubResource("AnimationNodeAnimation_yvbm5")
 states/death/position = Vector2(726, 91)
 states/hurt/node = SubResource("AnimationNodeAnimation_h8pdb")
-states/hurt/position = Vector2(698, 189)
+states/hurt/position = Vector2(606, 181)
 states/idle/node = SubResource("AnimationNodeAnimation_ak3vw")
 states/idle/position = Vector2(474, 91)
 states/parry/node = SubResource("AnimationNodeAnimation_ar03c")
@@ -92,7 +92,7 @@ states/walk/position = Vector2(274, -139)
 states/walk_bw/node = SubResource("AnimationNodeAnimation_28e3e")
 states/walk_bw/position = Vector2(691, -139)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_rlnjt"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_0xdah"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_m02m8"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5")]
-graph_offset = Vector2(225, -107)
+graph_offset = Vector2(21, -52)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sivvb"]
 

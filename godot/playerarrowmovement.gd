@@ -74,7 +74,6 @@ func parry():
 
 func hurt():
 	if can_attack == true and cooldown.is_stopped():
-		animation.travel("hurt")
 		can_move = false
 		can_attack = false
 		cooldown.start(.2)
@@ -96,13 +95,14 @@ func walk_bw():
 func _on_sword_hit_area_entered(area):
 	if area.is_in_group("hurtbox"):
 		print("dealt damage")
+
 		area.take_damage()
 
 
 func _on_hurtbox_area_entered(hitbox):
 	var base_damage = hitbox.damage
 	self.health -= base_damage
-	hurt()
+	animation.travel("hurt")
 	print(health)
 
 

@@ -80,7 +80,7 @@ states/Start/position = Vector2(292, 100)
 states/death/node = SubResource("AnimationNodeAnimation_yvbm5")
 states/death/position = Vector2(726, 91)
 states/hurt/node = SubResource("AnimationNodeAnimation_h8pdb")
-states/hurt/position = Vector2(698, 189)
+states/hurt/position = Vector2(474, 167)
 states/idle/node = SubResource("AnimationNodeAnimation_ak3vw")
 states/idle/position = Vector2(474, 91)
 states/parry/node = SubResource("AnimationNodeAnimation_ar03c")
@@ -92,7 +92,7 @@ states/walk/position = Vector2(274, -139)
 states/walk_bw/node = SubResource("AnimationNodeAnimation_28e3e")
 states/walk_bw/position = Vector2(691, -139)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_rlnjt"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_0xdah"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_m02m8"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5")]
-graph_offset = Vector2(235, -150)
+graph_offset = Vector2(-261, -153)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sivvb"]
 
@@ -618,6 +618,47 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_ymk0m"]
+resource_name = "parry"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"parry"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+
 [sub_resource type="Animation" id="Animation_t703t"]
 resource_name = "slash"
 length = 1.00001
@@ -718,47 +759,6 @@ tracks/1/keys = {
 "values": [8, 7, 6, 5, 4, 3, 2, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_ymk0m"]
-resource_name = "parry"
-length = 1.00001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"parry"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ge7v0"]
 _data = {
 "RESET": SubResource("Animation_8pkyt"),
@@ -797,8 +797,8 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_sivvb")
 position = Vector2(64, -125)
 scale = Vector2(0.274231, 0.274231)
 sprite_frames = SubResource("SpriteFrames_j3vpt")
-animation = &"idle"
-frame = 9
+animation = &"walk"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 reset_on_save = false
