@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_e5u85"]
 [ext_resource type="PackedScene" uid="uid://c7l1th2gg3viw" path="res://character/playerwasd.tscn" id="2_u021m"]
-[ext_resource type="AudioStream" uid="uid://c06ceg60ukm21" path="res://assets/ingame.mp3" id="3_olyqu"]
+[ext_resource type="AudioStream" uid="uid://ggwrf2ostydd" path="res://assets/sounds/musik.mp3" id="3_4dhjp"]
 [ext_resource type="Script" path="res://playerarrowmovement.gd" id="4_wsv74"]
 [ext_resource type="PackedScene" uid="uid://dj8y6k3if47mc" path="res://character/playerarrows.tscn" id="4_yba3n"]
 
@@ -11486,8 +11486,8 @@ shape = SubResource("SegmentShape2D_qgbg2")
 one_way_collision_margin = 0.0
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_olyqu")
-volume_db = -9.805
+stream = ExtResource("3_4dhjp")
+volume_db = -25.532
 autoplay = true
 
 [node name="playerarrows" parent="." instance=ExtResource("4_yba3n")]

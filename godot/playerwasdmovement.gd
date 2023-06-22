@@ -66,7 +66,7 @@ func attack():
 
 func parry():
 	if can_attack == true and cooldown.is_stopped():
-		animation.travel("hurt")
+		animation.travel("parry")
 		can_move = false
 		can_attack = false
 		cooldown.start(1)
@@ -93,10 +93,14 @@ func _on_sword_hit_area_entered(area):
 
 
 func _on_hurtbox_area_entered(hitbox):
-	var base_damage = hitbox.damage
-	self.health -= base_damage
-	animation.travel("hurt")
-	print(health)
+		if can_attack == true and cooldown.is_stopped():
+			animation.travel("parry")
+			can_move = false
+			can_attack = false
+			cooldown.start(.5)
+			var base_damage = hitbox.damage
+			self.health -= base_damage
+			print(health)
 
 
 func update_health():
