@@ -798,7 +798,7 @@ position = Vector2(64, -125)
 scale = Vector2(0.274231, 0.274231)
 sprite_frames = SubResource("SpriteFrames_j3vpt")
 animation = &"idle"
-frame = 1
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 reset_on_save = false
