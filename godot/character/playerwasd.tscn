@@ -1,12 +1,12 @@
-[gd_scene load_steps=99 format=3 uid="uid://c7l1th2gg3viw"]
+[gd_scene load_steps=101 format=3 uid="uid://c7l1th2gg3viw"]
 
 [ext_resource type="Script" path="res://playerwasdmovement.gd" id="1_obddr"]
 [ext_resource type="Texture2D" uid="uid://bnsafigiseh3x" path="res://assets/sprites/Death.png" id="2_voark"]
 [ext_resource type="Texture2D" uid="uid://7bhwew8myfwe" path="res://assets/sprites/hurt_spritesheet.png" id="3_dkpyh"]
 [ext_resource type="Texture2D" uid="uid://uk70udxrhlvl" path="res://assets/sprites/idle_spritesheet.png" id="4_lqag2"]
-[ext_resource type="PackedScene" uid="uid://ci0ogrheyvph5" path="res://Hitbox.tscn" id="5_eov53"]
+[ext_resource type="PackedScene" path="res://Hitbox.tscn" id="5_eov53"]
 [ext_resource type="Texture2D" uid="uid://b5xlipdjx52qy" path="res://assets/sprites/parrier.png" id="5_pkgon"]
-[ext_resource type="PackedScene" uid="uid://cccnvy8fr5kur" path="res://Hurtbox.tscn" id="6_3txjh"]
+[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="6_3txjh"]
 [ext_resource type="Texture2D" uid="uid://bdgofw5ijjjgq" path="res://assets/sprites/walker.png" id="6_t7ih3"]
 [ext_resource type="Texture2D" uid="uid://3x7r3laivt2" path="res://assets/sprites/Slasher.png" id="8_cniuc"]
 [ext_resource type="Texture2D" uid="uid://b4cqiac0c8kpn" path="res://assets/progress_color.png" id="9_wp08h"]
@@ -74,6 +74,10 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_81bvk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_inf86"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6f3di"]
 states/End/position = Vector2(905, 91)
 states/Start/position = Vector2(292, 101)
@@ -91,8 +95,8 @@ states/walk/node = SubResource("AnimationNodeAnimation_oqyce")
 states/walk/position = Vector2(274, -139)
 states/walk_bw/node = SubResource("AnimationNodeAnimation_28e3e")
 states/walk_bw/position = Vector2(691, -139)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_pcsiv"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_coklh"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_m7odh")]
-graph_offset = Vector2(-297, -282)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_pcsiv"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_coklh"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_m7odh"), "walk", "parry", SubResource("AnimationNodeStateMachineTransition_81bvk"), "walk_bw", "slash", SubResource("AnimationNodeStateMachineTransition_inf86")]
+graph_offset = Vector2(-297, -206.815)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sivvb"]
 
@@ -797,8 +801,8 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_sivvb")
 position = Vector2(64, -125)
 scale = Vector2(0.274231, 0.274231)
 sprite_frames = SubResource("SpriteFrames_j3vpt")
-animation = &"idle"
-frame = 2
+animation = &"walker"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 reset_on_save = false
