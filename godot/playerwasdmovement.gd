@@ -3,11 +3,16 @@ extends CharacterBody2D
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown = $attackCooldown
+@onready var dashCooldown = $dashCooldown
+@onready var hitCooldown = $hitCooldown
 @onready var animation = $AnimationTree.get("parameters/playback")
 @export var speed : float  = 300.0
 @export var jump_velocity : float = -400.0
 var can_attack = true
 var can_move = true
+var can_dash = true
+var dashing = false
+var dashDirection = Vector2.ZERO
 var health : int = 1000
 var direction : Vector2 = Vector2.ZERO
 var animation_locked : bool = false
@@ -19,6 +24,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _process(delta):
 	if health <= 0:
+		GlobalVars.setwinner_wasd()
 		die()
 
 
@@ -27,19 +33,24 @@ func _physics_process(delta):
 	if cooldown.is_stopped():
 		can_move = true
 		can_attack = true
+		dashing = false
+		can_dash = true
+	if hitCooldown.is_stopped():
+		can_move = true
+		can_attack = true
+	if dashCooldown.is_stopped():
+		pass
 	get_input(delta)
 	if Input.is_action_just_pressed("s"):
 		parry()
 	if Input.is_action_just_pressed("w"):
 		attack()
-
+	dash()
 
 
 func get_input(delta):
-	
 	if can_move == true:
 		move_and_slide()
-	
 	direction = Input.get_vector("a", "d", "null", "null")
 
 	if not is_on_floor():
@@ -47,8 +58,10 @@ func get_input(delta):
 
 	if direction:
 		if direction.x < 0:
+			dashDirection = Vector2(-1,0)
 			walk()
 		if direction.x > 0:
+			dashDirection = Vector2(1,0)
 			walk_bw()
 		velocity.x = direction.x * speed
 	else:
@@ -75,7 +88,10 @@ func parry():
 
 func die():
 	animation.travel("death")
-	get_tree().change_scene_to_file("res://screens/gameover.tscn")
+	cooldown.start(1)
+	if cooldown.is_stopped():
+		get_tree().change_scene_to_file("res://screens/gameover.tscn")
+	
 
 
 func walk():
@@ -85,6 +101,12 @@ func walk():
 func walk_bw():
 	animation.travel("walk_bw")
 
+func hurt():
+		can_move = false
+		can_attack = false
+		cooldown.start(.3)
+		animation.travel("hurt")
+
 
 func _on_sword_hit_area_entered(area):
 	if area.is_in_group("hurtbox"):
@@ -93,17 +115,23 @@ func _on_sword_hit_area_entered(area):
 
 
 func _on_hurtbox_area_entered(hitbox):
-		if can_attack == true and cooldown.is_stopped():
-			animation.travel("parry")
-			can_move = false
-			can_attack = false
-			cooldown.start(.5)
-			var base_damage = hitbox.damage
-			self.health -= base_damage
-			print(health)
-
+	var base_damage = hitbox.damage
+	self.hurt()
+	self.health -= base_damage
+	print(health)
 
 func update_health():
 	var healthbar = $hpbar
 	healthbar.value = health
+
+
+func dash():
+	if Input.is_action_just_pressed("E") and dashCooldown.is_stopped():
+		if direction.x < 0:
+			animation.travel("dash")
+		if direction.x > 0:
+			animation.travel("dash")
+		velocity += dashDirection.normalized() * 2000
+		print("dashed")
+		dashCooldown.start(health/200)
 

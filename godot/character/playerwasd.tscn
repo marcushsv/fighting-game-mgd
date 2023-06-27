@@ -1,6 +1,7 @@
-[gd_scene load_steps=99 format=3 uid="uid://c7l1th2gg3viw"]
+[gd_scene load_steps=107 format=3 uid="uid://c7l1th2gg3viw"]
 
 [ext_resource type="Script" path="res://playerwasdmovement.gd" id="1_obddr"]
+[ext_resource type="Texture2D" uid="uid://bdntti7qjpibb" path="res://assets/sprites/spritesheet_dash_p1.png" id="2_qqqca"]
 [ext_resource type="Texture2D" uid="uid://bnsafigiseh3x" path="res://assets/sprites/Death.png" id="2_voark"]
 [ext_resource type="Texture2D" uid="uid://7bhwew8myfwe" path="res://assets/sprites/hurt_spritesheet.png" id="3_dkpyh"]
 [ext_resource type="Texture2D" uid="uid://uk70udxrhlvl" path="res://assets/sprites/idle_spritesheet.png" id="4_lqag2"]
@@ -74,6 +75,10 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ej333"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nk63i"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6f3di"]
 states/End/position = Vector2(905, 91)
 states/Start/position = Vector2(292, 101)
@@ -91,10 +96,26 @@ states/walk/node = SubResource("AnimationNodeAnimation_oqyce")
 states/walk/position = Vector2(274, -139)
 states/walk_bw/node = SubResource("AnimationNodeAnimation_28e3e")
 states/walk_bw/position = Vector2(691, -139)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_pcsiv"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_coklh"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_m7odh")]
-graph_offset = Vector2(-297, -282)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_pcsiv"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_coklh"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_m7odh"), "walk", "parry", SubResource("AnimationNodeStateMachineTransition_ej333"), "walk_bw", "slash", SubResource("AnimationNodeStateMachineTransition_nk63i")]
+graph_offset = Vector2(-248, -22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sivvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulx6v"]
+atlas = ExtResource("2_qqqca")
+region = Rect2(0, 0, 1300, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj3dl"]
+atlas = ExtResource("2_qqqca")
+region = Rect2(1300, 0, 1300, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wvk7"]
+atlas = ExtResource("2_qqqca")
+region = Rect2(2600, 0, 1300, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi1ml"]
+atlas = ExtResource("2_qqqca")
+region = Rect2(0, 1500, 1300, 1500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sieif"]
 atlas = ExtResource("2_voark")
@@ -298,6 +319,23 @@ region = Rect2(10400, 0, 1300, 1500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j3vpt"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulx6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj3dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wvk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi1ml")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sieif")
@@ -530,6 +568,35 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_e5a3s"]
+resource_name = "dash"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dash"]
+}
+
 [sub_resource type="Animation" id="Animation_m4ljo"]
 resource_name = "death"
 length = 0.60001
@@ -559,34 +626,33 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_7jls1"]
+[sub_resource type="Animation" id="Animation_8if5m"]
 resource_name = "hurt"
-length = 0.416675
+length = 0.3
 loop_mode = 1
-step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hurt"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
 }
 
 [sub_resource type="Animation" id="Animation_crns5"]
@@ -762,8 +828,9 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ge7v0"]
 _data = {
 "RESET": SubResource("Animation_8pkyt"),
+"dash": SubResource("Animation_e5a3s"),
 "death": SubResource("Animation_m4ljo"),
-"hurt": SubResource("Animation_7jls1"),
+"hurt": SubResource("Animation_8if5m"),
 "idle": SubResource("Animation_crns5"),
 "parry": SubResource("Animation_ymk0m"),
 "slash": SubResource("Animation_t703t"),
@@ -798,7 +865,7 @@ position = Vector2(64, -125)
 scale = Vector2(0.274231, 0.274231)
 sprite_frames = SubResource("SpriteFrames_j3vpt")
 animation = &"idle"
-frame = 2
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 reset_on_save = false
@@ -843,9 +910,19 @@ tint_progress = Color(0.847059, 0.0980392, 0, 1)
 [node name="attackCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="dashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="hitCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="AnimatedSprite2D/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="attackCooldown" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dashCooldown" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="hitCooldown" to="." method="_on_timer_timeout"]
 
 [editable path="AnimatedSprite2D/Hitbox"]
 [editable path="AnimatedSprite2D/Hurtbox"]

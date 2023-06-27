@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://coturrj2uc5nb"]
+[gd_scene load_steps=12 format=3 uid="uid://coturrj2uc5nb"]
 
+[ext_resource type="Script" path="res://screens/gameon.gd" id="1_agoww"]
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_e5u85"]
 [ext_resource type="PackedScene" uid="uid://c7l1th2gg3viw" path="res://character/playerwasd.tscn" id="2_u021m"]
 [ext_resource type="AudioStream" uid="uid://ggwrf2ostydd" path="res://assets/sounds/musik.mp3" id="3_4dhjp"]
 [ext_resource type="Script" path="res://playerarrowmovement.gd" id="4_wsv74"]
 [ext_resource type="PackedScene" uid="uid://dj8y6k3if47mc" path="res://character/playerarrows.tscn" id="4_yba3n"]
+[ext_resource type="Script" path="res://screens/Camera2D.gd" id="7_ebynf"]
+[ext_resource type="FontFile" uid="uid://6ip6cnfwui2r" path="res://Zenzai Itacha.ttf" id="8_kdm36"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwfdf"]
 texture = ExtResource("1_e5u85")
@@ -11458,6 +11461,7 @@ a = Vector2(-1, -469)
 b = Vector2(0, 179)
 
 [node name="Mapscene" type="Node"]
+script = ExtResource("1_agoww")
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_emay6")
@@ -11493,3 +11497,25 @@ autoplay = true
 [node name="playerarrows" parent="." instance=ExtResource("4_yba3n")]
 position = Vector2(952, 471)
 script = ExtResource("4_wsv74")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)
+enabled = false
+script = ExtResource("7_ebynf")
+
+[node name="Gametimer" type="Timer" parent="."]
+autostart = true
+
+[node name="GametimerText" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 48.0
+offset_right = 728.0
+offset_bottom = 168.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("8_kdm36")
+theme_override_font_sizes/font_size = 50
+text = "Time: "
+
+[connection signal="timeout" from="Gametimer" to="." method="_on_gametimer_timeout"]

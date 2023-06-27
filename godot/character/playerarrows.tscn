@@ -96,7 +96,7 @@ states/walk/position = Vector2(274, -139)
 states/walk_bw/node = SubResource("AnimationNodeAnimation_28e3e")
 states/walk_bw/position = Vector2(691, -139)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rbmnf"), "idle", "slash", SubResource("AnimationNodeStateMachineTransition_i3epd"), "slash", "idle", SubResource("AnimationNodeStateMachineTransition_t0ir7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_r6oan"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_blp7k"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_rlnjt"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_0xdah"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_m02m8"), "death", "End", SubResource("AnimationNodeStateMachineTransition_v1k02"), "walk_bw", "idle", SubResource("AnimationNodeStateMachineTransition_xd64w"), "idle", "walk_bw", SubResource("AnimationNodeStateMachineTransition_q1oro"), "idle", "parry", SubResource("AnimationNodeStateMachineTransition_thyq8"), "parry", "idle", SubResource("AnimationNodeStateMachineTransition_05d3u"), "walk", "slash", SubResource("AnimationNodeStateMachineTransition_3s4nb"), "walk_bw", "parry", SubResource("AnimationNodeStateMachineTransition_08af5"), "walk_bw", "slash", SubResource("AnimationNodeStateMachineTransition_5rcl2"), "walk", "parry", SubResource("AnimationNodeStateMachineTransition_wn48n")]
-graph_offset = Vector2(-184, -199)
+graph_offset = Vector2(-181, -7)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sivvb"]
 
@@ -801,7 +801,7 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_sivvb")
 position = Vector2(59, -119)
 scale = Vector2(0.274231, 0.274231)
 sprite_frames = SubResource("SpriteFrames_j3vpt")
-animation = &"idle"
+animation = &"hurt"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 reset_on_save = false
@@ -845,6 +845,12 @@ tint_over = Color(0.870588, 0.87451, 0.866667, 0.741176)
 tint_progress = Color(0.286275, 0.352941, 1, 1)
 
 [node name="attackCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="dashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="hitCooldown" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

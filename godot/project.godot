@@ -15,9 +15,17 @@ run/main_scene="res://screens/menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalVars="*res://global_vars.gd"
+
 [dotnet]
 
 project/assembly_name="Fighting-game-mgd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_sfxr/plugin.cfg")
 
 [input]
 
@@ -69,6 +77,16 @@ right_arrow={
 null={
 "deadzone": 0.5,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":50,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+E={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
+]
+}
+Ctrl={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194326,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 
