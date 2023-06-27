@@ -135,7 +135,6 @@ func dash():
 			animation.travel("dash")
 		if direction.x > 0:
 			animation.travel("dash")
-		move_toward(velocity.x, 0, speed)
 		velocity += dashDirection.normalized() * 2000
 		print("dashed")
 		dashCooldown.start(health/200)
