@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cpcg8hcwyb3jv" path="res://assets/sprites/parrier_enemy.png" id="5_827xn"]
 [ext_resource type="Texture2D" uid="uid://bc05pfjvhtifu" path="res://assets/sprites/slasher_enemy.png" id="6_h12qh"]
 [ext_resource type="Texture2D" uid="uid://dhvm4q7sljxdd" path="res://assets/sprites/walker_enemy.png" id="7_qvdh7"]
-[ext_resource type="PackedScene" uid="uid://ci0ogrheyvph5" path="res://Hitbox.tscn" id="8_l3j23"]
-[ext_resource type="PackedScene" uid="uid://cccnvy8fr5kur" path="res://Hurtbox.tscn" id="9_lljsx"]
+[ext_resource type="PackedScene" path="res://Hitbox.tscn" id="8_l3j23"]
+[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="9_lljsx"]
 [ext_resource type="Texture2D" uid="uid://b4cqiac0c8kpn" path="res://assets/progress_color.png" id="10_48i6v"]
 [ext_resource type="Texture2D" uid="uid://bjl8wokvjmsbo" path="res://assets/progress_over.png" id="11_bpq3m"]
 
