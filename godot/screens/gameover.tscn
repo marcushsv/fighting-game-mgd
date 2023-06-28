@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://duv6nmr2ep77n"]
+[gd_scene load_steps=15 format=3 uid="uid://duv6nmr2ep77n"]
 
 [ext_resource type="Texture2D" uid="uid://bni0xhqhj7545" path="res://assets/background.jpg" id="1_53i5k"]
 [ext_resource type="Script" path="res://screens/gameover.gd" id="1_skfxb"]
 [ext_resource type="FontFile" uid="uid://6ip6cnfwui2r" path="res://Zenzai Itacha.ttf" id="2_2iqn4"]
+[ext_resource type="Texture2D" uid="uid://bdes0vs88sdyj" path="res://assets/background_revam_finishVer.png" id="2_geltv"]
 [ext_resource type="Script" path="res://Button.gd" id="2_hp22q"]
 [ext_resource type="Script" path="res://screens/start.gd" id="3_ilbno"]
 [ext_resource type="Texture2D" uid="uid://edk2wcqym6c0" path="res://assets/buttons.jpg" id="3_nn13a"]
@@ -11477,7 +11478,13 @@ modulate_color = Color(0.435294, 0.435294, 0.435294, 1)
 [node name="gameover" type="Node2D"]
 script = ExtResource("1_skfxb")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 326)
+scale = Vector2(0.597555, 0.6039)
+texture = ExtResource("2_geltv")
+
 [node name="Background" type="TileMap" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.501961)
 tile_set = SubResource("TileSet_jmj6h")
 format = 2
