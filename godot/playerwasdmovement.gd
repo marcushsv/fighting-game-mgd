@@ -87,11 +87,7 @@ func parry():
 
 
 func die():
-	animation.travel("death")
-	cooldown.start(1)
-	if cooldown.is_stopped():
-		get_tree().change_scene_to_file("res://screens/gameover.tscn")
-	
+	get_tree().change_scene_to_file("res://screens/gameover.tscn")	
 
 
 func walk():
